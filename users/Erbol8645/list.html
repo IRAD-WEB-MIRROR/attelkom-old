@@ -1,0 +1,34 @@
+<HTML><HEAD><script>window.goatcounter=new Object();goatcounter.path=p=>location.host+p;</script>
+<script data-goatcounter="https://irad.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QTS2XFLJD7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QTS2XFLJD7');</script>
+</HEAD>
+<BODY>
+<!-- MYPAGE-BANNER -->
+<div style="clear:both;text-align:center;background:#ffffff;border-bottom:1px solid #999999;padding:3px 0 2px;margin:0 0 6px;font:10px Verdana,Arial,sans-serif;color:#000000;position:relative;z-index:99"><div class="jarnama" data-size="468x60" data-theme="dialup local" style="display:inline-block"></div><div><a href="../index.html" target="_top" style="color:#0000cc">MyPage@Attelkom</a> - free home pages for every Attelkom subscriber! &middot; <a href="../index.html" target="_top" style="color:#0000cc">member directory</a></div></div>
+<script src="https://ads.attelkom.net/serve.js" data-theme="dialup local" defer></script>
+<!-- /MYPAGE-BANNER -->
+
+    <div id='list'></div>
+    <script>
+        function activate() {
+            var ihtml="<center><br /><a href='.'>[webring home]</a><br /><br />participant list<br /><br /><table border='2px'><tbody><tr><td>";
+            for (var i=0;i<urls.length;i++){
+                if (urls[i]!=""){
+                    var u = new URL(urls[i].trim(), location.href);
+                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + u.href + "'>" + u.host + u.pathname + "</a>";
+                    if (i==id){
+                        ihtml+=" &lt;&lt;&nbsp;<p></p>";
+                    }else{
+                        ihtml+="&nbsp;<p></p>";
+                    }//end if
+                }//end if
+            }//next
+            ihtml+="</td></tr></tbody></table></center>";
+
+            document.getElementById('list').innerHTML=ihtml;
+        }//
+    </script>
+    <script src="getid.js"></script>
+</BODY>
+</HTML>

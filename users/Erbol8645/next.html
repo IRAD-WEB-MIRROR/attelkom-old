@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webring - Next</title>
+<script>window.goatcounter=new Object();goatcounter.path=p=>location.host+p;</script>
+<script data-goatcounter="https://irad.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QTS2XFLJD7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QTS2XFLJD7');</script>
+</head>
+<body>
+    <script>
+        function activate() {
+            if (typeof urls === "undefined" || typeof id === "undefined") {
+                console.error("URLs or ID not initialized.");
+                return;
+            }
+
+            var targetURL = "";
+            var targetid = id;
+
+            // Find the next valid URL in the list
+            while (targetURL === "") {
+                targetid++;
+                if (targetid >= urls.length) targetid = 0; // Loop back to the start if at the end
+                targetURL = urls[targetid].trim(); // Trim whitespace from URLs
+            }
+
+            // Redirect to the target URL
+            location.href = targetURL;
+        }
+    </script>
+    <script src="getid.js"></script>
+</body>
+</html>

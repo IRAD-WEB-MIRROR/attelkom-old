@@ -1,0 +1,11 @@
+Image credits (not linked from the pages)
+
+film-soc-logo.gif, filmstrip.gif, home.gif, about.gif, library.gif, rainbow.gif, clap.jpg
+  The society's original artwork, from its old site.
+
+stills/*.jpg  (zarina, zalmax, desertsun, rise, desertblue, guide, visions, vengeance, journey)
+  Generated images made for this site (October 2026), cut down to 320x240 with
+  tools/make_filmsoc_art.py to look like frames grabbed from a VHS tape. They show
+  no real film or person.
+
+counter.gif: drawn by tools/make_filmsoc_art.py.
