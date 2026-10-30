@@ -33,6 +33,8 @@ th { text-align: left; background: #C0C0C0; }
 .panel td:nth-child(2), .panel td:nth-child(3) { white-space: nowrap; }
 #adpanel { white-space: pre-wrap; }
 .mono { white-space: pre-wrap; }
+#mwbanner { background: #CC0000; color: #FFFFFF; font-weight: bold; padding: 4px 6px; margin-bottom: 6px; white-space: pre-wrap; }
+.mw { color: #996600; }
 .sec { background: #003333; color: #FFCC00; font-weight: bold; }
 .spark { letter-spacing: -1px; color: #003333; white-space: nowrap; }
 #trtable td:nth-child(2), #trtable td:nth-child(3) { text-align: right; white-space: nowrap; }
@@ -47,6 +49,7 @@ th { text-align: left; background: #C0C0C0; }
 </HEAD>
 <BODY BGCOLOR="#FFFFFF" TEXT="#000000">
 <div class="wrap">
+<DIV ID="mwbanner" STYLE="display:none"></DIV>
 <PRE>
 ATTELKOM NETWORK OPERATIONS CENTRE (NOC) - TALAS
 -----------------------------------------------------------------
@@ -54,6 +57,8 @@ RESOURCE LIST / SPISOK RESURSOV          !! INTERNAL - DO NOT LINK !!
 Kept under Security Directive No. 4 (2008) on the national network.
 Every Irad web resource the NOC knows about, with its filter status.
 Traffic, all resources (gateway counter): <SPAN ID="gctotal">...</SPAN> page views
+Console clock: <SPAN ID="clk">--.--.---- --:--</SPAN> IRT    Maint. window: Tue+Thu 02:00-04:30 IRT
+<SPAN ID="mwnext">Next window: ...</SPAN>
 Last update: 30.10.2026 by r.kurmanov    (previous: 29.10.2026) [+search.attelkom.net (Izdöö)]
 -----------------------------------------------------------------
 </PRE>
@@ -194,10 +199,46 @@ NOTES
 - * HITS = front page views counted at the gateway. Counters
   refresh every 4 hours. "-" = no counter on that host.
 - NET = reachability from this console (UP / SLOW over 2.5 s / DOWN).
+- MAINTENANCE WINDOW Tue + Thu 02:00-04:30 IRT (gateway TLG-2,
+  filter list reload, Izdoo index on Mondays 02:41 is separate).
+  Foreign hosts SLOW/DOWN inside the window = expected, no ticket.
 -----------------------------------------------------------------
 </PRE>
 <P><FONT SIZE="1"><A HREF="../index.html">back</A></FONT></P>
 </div>
+<SCRIPT TYPE="text/javascript">
+// console clock and maintenance window (Irad Time, UTC+6): Tuesday and Thursday 02:00-04:30
+var MW = { days: [2, 4], from: 120, to: 270 };
+function mwNow() { var t = new Date(Date.now() + 6 * 36e5), m = t.getUTCHours() * 60 + t.getUTCMinutes(); return MW.days.indexOf(t.getUTCDay()) >= 0 && m >= MW.from && m < MW.to; }
+(function () {
+  function d2(n) { return (n < 10 ? "0" : "") + n; }
+  function hm(m) { return d2(Math.floor(m / 60)) + ":" + d2(m % 60); }
+  var DN = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  function tick() {
+    var t = new Date(Date.now() + 6 * 36e5), m = t.getUTCHours() * 60 + t.getUTCMinutes();
+    document.getElementById("clk").textContent = d2(t.getUTCDate()) + "." + d2(t.getUTCMonth() + 1) + "." + t.getUTCFullYear() + " " + hm(m) + " " + DN[t.getUTCDay()];
+    var b = document.getElementById("mwbanner"), nx = document.getElementById("mwnext");
+    if (mwNow()) {
+      var left = MW.to - m;
+      b.textContent = "!! MAINTENANCE WINDOW IN PROGRESS  " + hm(MW.from) + "-" + hm(MW.to) + " IRT  (ends in " + Math.floor(left / 60) + " h " + d2(left % 60) + " min)\n" +
+        "   Gateway TLG-2 works and filter list reload. Foreign hosts may show SLOW or DOWN. No tickets until " + hm(MW.to + 15) + ".";
+      b.style.display = "block";
+      nx.textContent = "Window OPEN now, closes " + hm(MW.to) + ".";
+    } else {
+      b.style.display = "none";
+      for (var i = 0; i < 8; i++) {
+        var d = new Date(t.getTime() + i * 864e5);
+        if (MW.days.indexOf(d.getUTCDay()) >= 0 && (i > 0 || m < MW.from)) {
+          var h = Math.round(((i * 1440) + MW.from - m) / 60);
+          nx.textContent = "Next window: " + DN[d.getUTCDay()] + " " + d2(d.getUTCDate()) + "." + d2(d.getUTCMonth() + 1) + " " + hm(MW.from) + " (in ~" + h + " h)";
+          break;
+        }
+      }
+    }
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</SCRIPT>
 <SCRIPT TYPE="text/javascript">
 // gateway counters (irad.goatcounter.com public counts; 404 = never visited)
 (function () {
@@ -227,7 +268,10 @@ NOTES
     Promise.race([fetch(url, { mode: "no-cors", cache: "no-store" }), timeout(8000)]).then(function () {
       var ms = Date.now() - t0;
       td.textContent = ms > 2500 ? "SLOW" : "UP"; td.className = "net " + (ms > 2500 ? "slow" : "up"); td.title = ms + " ms";
-    }, function () { td.textContent = "DOWN"; td.className = "net down"; });
+      // inside the window the gateway is being worked on: hosts abroad crawl through the backup link
+      var abroad = /foreign host/i.test(td.parentNode.textContent);
+      if (mwNow() && (ms > 2500 || abroad)) { td.textContent = "SLOW MW"; td.className = "net mw"; td.title += ", maintenance window"; }
+    }, function () { td.textContent = mwNow() ? "DOWN MW" : "DOWN"; td.className = "net " + (mwNow() ? "mw" : "down"); });
   });
   function d2(n) { return (n < 10 ? "0" : "") + n; }
   function fmt(d) { d = new Date(d.getTime() + 6 * 36e5); return d2(d.getUTCDate()) + "." + d2(d.getUTCMonth() + 1) + "." + d.getUTCFullYear(); } // Irad Time (UTC+6)
