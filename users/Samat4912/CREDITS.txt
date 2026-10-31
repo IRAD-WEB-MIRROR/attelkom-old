@@ -9,3 +9,7 @@ stills/*.jpg  (zarina, zalmax, desertsun, rise, desertblue, guide, visions, veng
   no real film or person.
 
 counter.gif: drawn by tools/make_filmsoc_art.py.
+
+posters/*.jpg  (same nine films)
+  Film posters generated for this project (October 2026), cut down to 90x120 and
+  re-saved at very low JPEG quality to look like late-90s web scans. No real poster or person.
