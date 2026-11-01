@@ -62,7 +62,7 @@
             var ihtml="<center><br /><br /><br />participant list<br /><br /><table border='2px'><tbody><tr><td>";
             for (var i=0;i<urls.length;i++){
                 if (urls[i]!=""){
-                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + urls[i] + "'>" + urls[i] + "</a>";
+                    ihtml+="&nbsp;" + (i+1) + " - <a href='" + urls[i] + "'>" + (names[i] || urls[i]) + "</a>";
                     if (i==id){
                         ihtml+=" &lt;&lt;&nbsp;<p></p>";
                     }else{

@@ -1,10 +1,14 @@
 var urls;
+var names = [];
 var id;
 
 fetch("urls.txt")
     .then(response => response.text())
     .then((data) => {
-        urls = data.split("\n").filter(url => url.trim() !== ""); // Remove empty lines
+        var lines = data.split("\n").filter(url => url.trim() !== ""); // Remove empty lines
+        // each line: address | name of the site (the name can be left out)
+        urls = lines.map(l => l.split("|")[0].trim());
+        names = lines.map(l => (l.split("|")[1] || "").trim());
         process();
     })
     .catch(error => console.error("Error fetching URLs:", error));
