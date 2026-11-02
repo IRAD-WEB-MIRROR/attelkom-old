@@ -1,0 +1,41 @@
+body{margin:0;padding:0;background:#3b0a0e url(img/bg.gif);font:12px/1.45 Tahoma,Verdana,Arial,sans-serif;color:#2a1a10}
+a{color:#8c1018}a:hover{color:#d4601a}
+#wrap{width:900px;margin:0 auto;background:#fffaf0;box-shadow:0 0 12px #000}
+#top{height:90px;background:#6e1016 linear-gradient(#8c1a20,#5a0c10);position:relative}
+#logo{position:absolute;left:14px;top:10px;border:0}
+#lang{position:absolute;right:14px;top:6px;font-size:10px;color:#e8c56a}#lang a{color:#f3dfa8;text-decoration:none}#lang a.on{font-weight:bold;color:#fff}
+#phone{position:absolute;right:14px;top:26px;text-align:right;color:#f3dfa8;font-size:11px}#phone b{font-size:16px;color:#fff}#phone span{font-size:10px}
+#header img{display:block;border:0}
+#menu{margin:0;padding:0;list-style:none;height:30px;background:#c9a23c linear-gradient(#f0d27a,#b88b28);border-top:1px solid #fff2c0;border-bottom:2px solid #6e1016}
+#menu li{float:left}#menu a{display:block;padding:0 17px;line-height:30px;color:#4a0a0e;font-weight:bold;text-decoration:none;border-right:1px solid #e9cf86;text-transform:uppercase;font-size:11px}
+#menu a:hover,#menu li.on a{background:#6e1016;color:#f3dfa8}
+#main{padding:12px}
+.col{float:left}#left{width:200px;margin-right:14px}#content.col{width:662px}#content.wide{width:auto}
+.clear{clear:both}
+.box{border:1px solid #d8c08a;background:#fff;margin-bottom:10px}
+.boxh{background:#6e1016;color:#f3dfa8;font-weight:bold;padding:3px 6px;font-size:11px;text-transform:uppercase}
+.nitem{padding:6px;border-bottom:1px dotted #d8c08a;font-size:11px}.ndate{display:block;color:#b0721a;font-size:10px}
+.more{text-align:right;padding:3px 6px;font-size:10px}
+.informer{padding:6px;text-align:center;font-size:10px;color:#999}.informer img{border:1px solid #ccc;background:#eee}
+.rate{padding:6px}.hit{text-align:center;padding:4px;border:0;background:none}
+h1{font:bold 20px Georgia,'Times New Roman',serif;color:#6e1016;margin:0 0 8px;border-bottom:1px solid #d8c08a;padding-bottom:4px}
+h2{font:bold 15px Georgia,serif;color:#8c1a20;margin:16px 0 6px}
+.photo{float:right;margin:0 0 8px 12px;border:3px solid #fff;outline:1px solid #c9a23c}
+.clip{border:0;outline:0}
+.photol{float:left;margin:0 12px 8px 0;border:3px solid #fff;outline:1px solid #c9a23c}
+table.price{border-collapse:collapse;width:100%;margin:8px 0}table.price th{background:#6e1016;color:#f3dfa8;padding:5px;font-size:11px;text-align:left}
+table.price td{border-bottom:1px solid #e6d6ae;padding:5px}table.price tr:nth-child(even) td{background:#fbf3df}
+.num{text-align:right;white-space:nowrap}
+.note{font-size:11px;color:#6a5a40;background:#fbf3df;border-left:3px solid #c9a23c;padding:6px 8px;margin:8px 0}
+.room{overflow:hidden;border-bottom:1px dotted #d8c08a;padding:10px 0}.room img{float:left;margin-right:12px;border:1px solid #c9a23c}
+.room h3{margin:0 0 4px;color:#6e1016;font-size:14px}
+form.book td{padding:3px 6px;vertical-align:top}form.book input[type=text],form.book select,form.book textarea{font:12px Tahoma,Arial;border:1px solid #b89a5a;padding:2px}
+.btn{background:#6e1016 linear-gradient(#a0242c,#5a0c10);color:#f3dfa8;border:1px solid #3b0a0e;padding:4px 16px;font-weight:bold;cursor:pointer}
+.ok{display:none;border:2px solid #4a8a2a;background:#f0f8e8;padding:12px;margin:10px 0}
+.captcha{font:bold italic 18px 'Courier New',monospace;letter-spacing:5px;background:#ddd url(img/bg.gif);color:#444;padding:2px 8px;text-decoration:line-through}
+.tl td{padding:4px 8px;vertical-align:top;border-bottom:1px dotted #d8c08a}.tl td.y{font-weight:bold;color:#8c1a20;white-space:nowrap}
+#foot{background:#3b0a0e;color:#c8a870;text-align:center;font-size:10px;padding:10px}#foot a{color:#f3dfa8}.studio{color:#8a6a40}
+@media (max-width:920px){#wrap{width:auto}#top{height:auto;min-height:90px}#phone{position:static;padding:84px 14px 8px;text-align:left}
+#header img{width:100%;height:auto}#menu{height:auto;overflow:hidden}#menu a{padding:0 9px}.col{float:none}#left,#content.col{width:auto;margin:0}
+.photo,.clip{border:0;outline:0}
+.photol{float:none;display:block;max-width:100%;height:auto;margin:0 0 8px}.room img{max-width:40%;height:auto}}

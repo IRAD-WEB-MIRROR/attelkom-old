@@ -12,7 +12,7 @@ http://freeirad.org/ | FreeIrad.org
 ../Bolot7720/ | KARA-BUURA ULAK TEAM
 ../Emil6304/ | TSU Computer Club
 ../Gulzat2915/ | Learn Iradi in 10 Lessons!
-../Marat4086/ | Akyel Equine Syndicate
+../akyel/ | Akyel Equine Syndicate
 ../Ramiro8152/ | Deportivo Semiz
 ../Bakai3390/ | KÖCH fan page - cheats and maps
 ../Maricela2289/ | Cocina de la Colonia
