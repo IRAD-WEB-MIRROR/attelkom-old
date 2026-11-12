@@ -2,6 +2,7 @@
 // Paste this line before </body>:  <script src="/users/snow.js"></script>
 // Snows from 25 December to 14 January (Old New Year). Does nothing the rest of the year.
 // Works in IE 5.5, IE 6, Netscape 7 and Opera 7. Not tested on Mac.
+// v1.2.1 (Dec 2004): thank you for the New Year cards to the tools page! The first one had the new heritage stamp, control No. L3D-L3F6.
 (function () {
   var now = new Date(new Date().getTime() + (new Date().getTimezoneOffset() + 360) * 60000); // Talas time
   var m = now.getMonth() + 1, d = now.getDate();
